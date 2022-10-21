@@ -8,11 +8,19 @@ public class ClickUpProperties {
     private static final String TEAM_ID = "clickup.team.id";
 
     public static String getToken() {
-        return getProperties(TOKEN);
+        if (getProperties(TOKEN).isEmpty() || getProperties(TOKEN).startsWith("Enter")) {
+            return System.getProperty("TOKEN");
+        } else {
+            return getProperties(TOKEN);
+        }
     }
 
     public static String getTeamId() {
-        return getProperties(TEAM_ID);
+        if (getProperties(TEAM_ID).isEmpty() || getProperties(TEAM_ID).startsWith("Enter")) {
+            return System.getProperty("TEAM_ID");
+        } else {
+            return getProperties(TEAM_ID);
+        }
     }
 
     private static String getProperties(String key) {
